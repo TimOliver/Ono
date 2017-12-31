@@ -392,7 +392,11 @@ static void ONOSetErrorFromXMLErrorPtr(NSError * __autoreleasing *error, xmlErro
 - (void)enumerateElementsWithCSS:(NSString *)CSS
                            block:(void (^)(ONOXMLElement *))block
 {
+    // Since this method itself is also deprecated, supress the warning here
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
     [self.rootElement enumerateElementsWithCSS:CSS block:block];
+#pragma GCC diagnostic pop
 }
 
 - (void)enumerateElementsWithCSS:(NSString *)CSS
